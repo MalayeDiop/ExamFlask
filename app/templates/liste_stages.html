@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Mes Stages - StageTracker{% endblock %}
+
+{% block content %}
+<h2 class="text-xl font-semibold mb-6">Mes stages</h2>
+
+<form method="GET" action="{{ url_for('dashboard') }}" class="mb-6">
+    <input type="text" name="q" placeholder="Rechercher une entreprise..." value="{{ query }}" class="p-2 border rounded w-full sm:w-96">
+    <button type="submit" class="ml-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Rechercher</button>
+</form>
+
+{% if stages %}
+    <div class="space-y-4">
+        {% for stage in stages %}
+            <div class="p-4 bg-white rounded shadow">
+                <h3 class="text-lg font-bold">{{ stage.entreprise }} - {{ stage.poste }}</h3>
+                {% if stage.description %}
+                    <p class="mt-1 text-sm text-gray-600">{{ stage.description }}</p>
+                {% endif %}
+                <p class="text-sm mt-1">Du {{ stage.debut }} au {{ stage.fin or "..." }}</p>
+                <a href="{{ url_for('modifier_stage', id=stage.id) }}" class="text-blue-600 hover:underline text-sm mt-2 inline-block">Modifier</a>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>Aucun stage trouvé.</p>
+{% endif %}
+{% endblock %}

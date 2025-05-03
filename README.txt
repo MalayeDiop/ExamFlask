@@ -37,3 +37,5 @@ stage, request.form['entreprise'] permet de récupérer la valeur de l'entrepris
 
 Bon en quelques ligne voici ce à quoi consiste mon projet. J'espère que j'ai été assez clair.
 Aythieu BREUKHHHHHH.
+
+Mouhamadou Lamine Laye DIOP - L3 GLRS
